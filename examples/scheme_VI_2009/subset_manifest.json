@@ -1,0 +1,90 @@
+{
+  "period": [
+    "2009-01-01",
+    "2009-12-31"
+  ],
+  "source": "Original uncalibrated runoff/baseflow workbooks",
+  "processing": "Date filtering only; all node columns and numerical values retained. No filling or rescaling.",
+  "files": [
+    {
+      "station": "ribu",
+      "channel": "runoff",
+      "original_file": "ribu_runoff.xlsx",
+      "rows": 365,
+      "node_columns": 277,
+      "sha256": "748fa051c12a9c8c22e74eeeebd5abb3c81267b2f9905111f988c1b4d8f54ba0"
+    },
+    {
+      "station": "ribu",
+      "channel": "baseflow",
+      "original_file": "ribu_baseflow.xlsx",
+      "rows": 365,
+      "node_columns": 277,
+      "sha256": "4ef0e4efdfe4bdea036895326423d65a63f3f3c8db021122559880a665802f2c"
+    },
+    {
+      "station": "yilinchang",
+      "channel": "runoff",
+      "original_file": "yilinchang_runoff.xlsx",
+      "rows": 365,
+      "node_columns": 176,
+      "sha256": "d4391143a43bcb298ba414521eb2cd44de53fc666da45c984ed67c88a4332f07"
+    },
+    {
+      "station": "yilinchang",
+      "channel": "baseflow",
+      "original_file": "yilinchang_baseflow.xlsx",
+      "rows": 365,
+      "node_columns": 176,
+      "sha256": "eb3ecd0c4deb3fc12802ee75082e163e131baf587ea252448be650936892e76c"
+    },
+    {
+      "station": "dajin",
+      "channel": "runoff",
+      "original_file": "dajin_runoff.xlsx",
+      "rows": 365,
+      "node_columns": 624,
+      "sha256": "e555311bac7e10ccd5f8d7ee714fdc5a4410d5b76a7eec52fb50a4cbb8f29676"
+    },
+    {
+      "station": "dajin",
+      "channel": "baseflow",
+      "original_file": "dajin_baseflow.xlsx",
+      "rows": 365,
+      "node_columns": 624,
+      "sha256": "0319aff72cafef07223cea5335dd93af9947c73f4df3126eeb61ff75a8de7524"
+    },
+    {
+      "station": "danba",
+      "channel": "runoff",
+      "original_file": "danba_runoff.xlsx",
+      "rows": 365,
+      "node_columns": 805,
+      "sha256": "a15a6a202398e63c42cd6b301169ab252ed7a33ea7a382c6c19ea468180c43e1"
+    },
+    {
+      "station": "danba",
+      "channel": "baseflow",
+      "original_file": "danba_baseflow.xlsx",
+      "rows": 365,
+      "node_columns": 805,
+      "sha256": "c1f607ac1ab73aa21b3ed9fadcc15b2c8bff8ab63c4d89e33be2d9e8e9781677"
+    },
+    {
+      "station": "xiaojin",
+      "channel": "runoff",
+      "original_file": "xiaojin_runoff.xlsx",
+      "rows": 365,
+      "node_columns": 69,
+      "sha256": "7480f2b3a9ae821d07a51220372f6456d4d4548409179f2ff1a9aa6878da3f26"
+    },
+    {
+      "station": "xiaojin",
+      "channel": "baseflow",
+      "original_file": "xiaojin_baseflow.xlsx",
+      "rows": 365,
+      "node_columns": 69,
+      "sha256": "93ae5ff7bb8c1c2175c58f1ce39997eb28f34ea6cc3219219315d502b5fd81c1"
+    }
+  ]
+}

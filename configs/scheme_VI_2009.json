@@ -1,0 +1,59 @@
+{
+  "training": {
+    "window": 12,
+    "target_lead_days": 1,
+    "train_fraction": 0.65,
+    "val_fraction": 0.1,
+    "train_end": null,
+    "val_end": null,
+    "boundary_context": "past",
+    "gcn_hidden": 32,
+    "lstm_hidden": 128,
+    "dropout": 0.3,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 8,
+    "epochs": 2,
+    "early_stop_patience": 15,
+    "lr_patience": 5,
+    "seed": 42,
+    "deterministic": true,
+    "device": "cpu",
+    "make_plots": true
+  },
+  "schemes": [
+    6
+  ],
+  "seeds": [
+    42
+  ],
+  "basins": [
+    {
+      "name": "ribu",
+      "runoff_excel": "../examples/scheme_VI_2009/ribu/runoff.csv",
+      "baseflow_excel": "../examples/scheme_VI_2009/ribu/baseflow.csv"
+    },
+    {
+      "name": "yilinchang",
+      "runoff_excel": "../examples/scheme_VI_2009/yilinchang/runoff.csv",
+      "baseflow_excel": "../examples/scheme_VI_2009/yilinchang/baseflow.csv"
+    },
+    {
+      "name": "dajin",
+      "runoff_excel": "../examples/scheme_VI_2009/dajin/runoff.csv",
+      "baseflow_excel": "../examples/scheme_VI_2009/dajin/baseflow.csv"
+    },
+    {
+      "name": "danba",
+      "runoff_excel": "../examples/scheme_VI_2009/danba/runoff.csv",
+      "baseflow_excel": "../examples/scheme_VI_2009/danba/baseflow.csv"
+    },
+    {
+      "name": "xiaojin",
+      "runoff_excel": "../examples/scheme_VI_2009/xiaojin/runoff.csv",
+      "baseflow_excel": "../examples/scheme_VI_2009/xiaojin/baseflow.csv"
+    }
+  ],
+  "station_edges_file": "../examples/scheme_VI_2009/station_edges.csv",
+  "example_notice": "Real uncalibrated 2009 input subset for a short execution example, not reproduction of full-period manuscript scores."
+}

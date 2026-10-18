@@ -1,0 +1,59 @@
+{
+  "training": {
+    "window": 12,
+    "target_lead_days": 1,
+    "train_fraction": 0.65,
+    "val_fraction": 0.1,
+    "train_end": null,
+    "val_end": null,
+    "boundary_context": "past",
+    "gcn_hidden": 32,
+    "lstm_hidden": 128,
+    "dropout": 0.3,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 8,
+    "epochs": 200,
+    "early_stop_patience": 15,
+    "lr_patience": 5,
+    "seed": 42,
+    "deterministic": true,
+    "device": "auto",
+    "make_plots": true
+  },
+  "schemes": [
+    6
+  ],
+  "seeds": [
+    42
+  ],
+  "basins": [
+    {
+      "name": "ribu",
+      "runoff_excel": "../data/ribu/runoff.xlsx",
+      "baseflow_excel": "../data/ribu/baseflow.xlsx"
+    },
+    {
+      "name": "yilinchang",
+      "runoff_excel": "../data/yilinchang/runoff.xlsx",
+      "baseflow_excel": "../data/yilinchang/baseflow.xlsx"
+    },
+    {
+      "name": "dajin",
+      "runoff_excel": "../data/dajin/runoff.xlsx",
+      "baseflow_excel": "../data/dajin/baseflow.xlsx"
+    },
+    {
+      "name": "danba",
+      "runoff_excel": "../data/danba/runoff.xlsx",
+      "baseflow_excel": "../data/danba/baseflow.xlsx"
+    },
+    {
+      "name": "xiaojin",
+      "runoff_excel": "../data/xiaojin/runoff.xlsx",
+      "baseflow_excel": "../data/xiaojin/baseflow.xlsx"
+    }
+  ],
+  "template_notice": "Full-period reproduction requires the complete real inputs for all five stations. Use scheme_VI_2009.json for the included short real-data example.",
+  "station_edges_file": "../examples/scheme_VI_2009/station_edges.csv"
+}

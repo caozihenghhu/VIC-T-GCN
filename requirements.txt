@@ -1,0 +1,7 @@
+# Install torch==2.8.0 for your CPU/CUDA environment before these dependencies.
+numpy==1.26.4
+pandas==2.2.3
+scipy==1.17.1
+openpyxl==3.1.5
+matplotlib==3.11.2
+torch-geometric==2.7.0
