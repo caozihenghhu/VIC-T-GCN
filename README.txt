@@ -12,14 +12,12 @@ and baseflow simulated by the Variable Infiltration Capacity (VIC) model.
   VIC_TGCN_Scheme_I.py        Scheme I: dual-graph model (surface runoff + baseflow,
                               surface + subsurface flow-direction graphs)
   VIC_TGCN_Schemes_II_VI.py   Comparison schemes II-V (grid-based) and VI
-                              (five-station joint model)
+                              (station-network model)
   requirements.txt            Pinned Python dependencies (install PyTorch separately,
                               see below)
-  configs/                    Executable JSON configurations for Danba, the Scheme VI
-                              2009 example, and a five-station template
+  configs/                    Executable JSON configurations for the Danba example and
+                              a Scheme VI template
   data/danba/                 Complete full-period inputs for the Danba basin (2009-2020)
-  examples/                   Real 2009 input subset for all five stations, used to
-                              execute Scheme VI
 
 
 2. INSTALLATION
@@ -214,68 +212,42 @@ To run only one comparison scheme, use, for example, --schemes 3. Scheme I uses 
 The comparison script's --output path is relative to the current working directory.
 
 
-9. RUN THE FIVE-STATION SCHEME VI
----------------------------------
+9. RUN SCHEME VI (STATION NETWORK)
+----------------------------------
 
-Scheme VI is a joint station-network model. The implementation expects Ribu,
-Yilinchang, Dajin, Danba and Xiaojin. A real 2009 subset of uncalibrated
-runoff/baseflow inputs and observed discharge is included for all five stations so
-that the Scheme VI code can be executed. The shorter Scheme VI example does not
-reproduce the full-period results reported in the manuscript (see Section 10, Data
-availability and restrictions).
+Scheme VI is a joint station-network model in which nodes are gauging stations and
+directed edges follow upstream-downstream relationships. To run it, prepare
+runoff.xlsx and baseflow.xlsx for every station in the format described in Section 6,
+with the same daily date range at all stations, and supply sufficient node columns
+for the 15-component PCA representation of each station.
 
-For a quick CPU test (two epochs), run:
-
-    python VIC_TGCN_Schemes_II_VI.py --config configs/scheme_VI_2009.json --preflight
-    python VIC_TGCN_Schemes_II_VI.py --config configs/scheme_VI_2009.json --output results/scheme_VI_2009
-
-See examples/scheme_VI_2009/README.md for data details and the checkpoint reload
-command. The subset retains all original node columns and numerical values without
-interpolation or rescaling. No synthetic input series are included.
-
-Station connectivity is read from examples/scheme_VI_2009/station_edges.csv,
-referenced by "station_edges_file" in the configuration. Its two columns are
-"upstream" and "downstream". Relative paths are resolved from the configuration
-directory. Each row defines one directed upstream-to-downstream edge; names must
-match the station inputs. The code checks unknown names, duplicate edges,
-self-connections, cycles, and graph connectivity.
-
-For a full-period experiment, prepare runoff.xlsx and baseflow.xlsx for every station
-in the format above, with the same daily date range across all five stations. Supply
-sufficient node columns for the 15-component PCA representation. Scheme VI constructs
-station-level features from these tables rather than using the two grid-direction
-rasters as its station graph.
+Station connectivity is read from a CSV file referenced by "station_edges_file" in
+the configuration. Its two columns are "upstream" and "downstream", and each row
+defines one directed upstream-to-downstream edge; names must match the station inputs.
+Relative paths are resolved from the configuration directory. The code checks unknown
+names, duplicate edges, self-connections, cycles, and graph connectivity.
 
 Update the input paths in configs/scheme_VI_five_stations.template.json, then run:
 
     python VIC_TGCN_Schemes_II_VI.py --config configs/scheme_VI_five_stations.template.json --schemes 6 --seeds 42 --preflight
     python VIC_TGCN_Schemes_II_VI.py --config configs/scheme_VI_five_stations.template.json --schemes 6 --seeds 42 --output results/scheme_VI
 
-The template references the station edge CSV. Adapting Scheme VI to a different
-five-station network requires updating STATION_ORDER in the comparison script, the
-station edge CSV, and the configuration's "basins" consistently. The present
-implementation requires five stations; changing that count requires corresponding
-code changes.
+The station order is defined by STATION_ORDER in the comparison script; the station
+edge CSV and the configuration's "basins" must be updated consistently with it. The
+present implementation uses five stations; changing that number requires
+corresponding code changes.
 
 
-10. DATA AVAILABILITY AND RESTRICTIONS
---------------------------------------
+10. DATA
+--------
 
-Danba basin. Complete full-period (2009-2020) inputs are provided in data/danba/: the
-gridded VIC surface-runoff and baseflow series, observed outlet discharge, the node
-table, and the surface and subsurface flow-direction rasters. Schemes I-V can be run
-and checked end to end with these files.
-
-Ribu, Yilinchang, Dajin and Xiaojin basins. The full-period gridded VIC runoff and
-baseflow series, node tables and surface/subsurface flow-direction rasters for these
-four basins cannot be publicly released because they are subject to the data-use
-restrictions of the data provider. Only the 2009 subset in examples/scheme_VI_2009/
-is included, solely to allow the Scheme VI code to be executed.
-
-Access to restricted data. The restricted data are available from the corresponding
-author (yiming.hu@hhu.edu.cn) upon reasonable request.
+The Danba basin is provided as a complete worked example in data/danba/: the gridded
+VIC surface-runoff and baseflow series (2009-2020), observed outlet discharge, the
+node table, and the surface and subsurface flow-direction rasters. Schemes I-V can be
+run end to end with these files, and the files serve as format templates for
+preparing other basins (Sections 6-8).
 
 Third-party datasets. Meteorological forcing (CN05.1), soil (HWSD), vegetation
 (UMD 1 km land cover), elevation (Geospatial Data Cloud DEM) and groundwater heads
-(Wang et al., 2025) are available from their original providers, as listed in the
-Open Research section of the manuscript.
+(Wang et al., 2025; https://doi.org/10.6084/m9.figshare.27160197) are available from
+their original providers, as listed in the Open Research section of the manuscript.
