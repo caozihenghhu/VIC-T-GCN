@@ -17,7 +17,7 @@ and baseflow simulated by the Variable Infiltration Capacity (VIC) model.
                               see below)
   configs/                    Executable JSON configurations for the Danba example and
                               a Scheme VI template
-  data/danba/                 Complete full-period inputs for the Danba basin (2009-2020)
+  data/danba/                 Example inputs for the Danba basin
 
 
 2. INSTALLATION
